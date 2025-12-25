@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CharismaAI - AI Interview Coach</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <h1>✨ CharismaAI</h1>
+                <p>Your AI Interview Performance Coach</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Agent 1: Context Architect Section -->
+            <section id="agent1-section" class="section active">
+                <div class="section-header">
+                    <h2>🎯 Agent 1: Context Architect</h2>
+                    <p>Let's understand your background and target role</p>
+                </div>
+
+                <div class="form-container">
+                    <!-- Role Selection -->
+                    <div class="form-group">
+                        <label for="role-select">Target Role *</label>
+                        <select id="role-select" class="input-field">
+                            <option value="">Select a role...</option>
+                            <option value="Software Engineer">Software Engineer</option>
+                            <option value="Data Scientist">Data Scientist</option>
+                            <option value="Product Manager">Product Manager</option>
+                            <option value="Frontend Developer">Frontend Developer</option>
+                            <option value="Backend Developer">Backend Developer</option>
+                            <option value="Full Stack Developer">Full Stack Developer</option>
+                            <option value="DevOps Engineer">DevOps Engineer</option>
+                            <option value="custom">Custom Role...</option>
+                        </select>
+                    </div>
+
+                    <div id="custom-role-container" class="form-group hidden">
+                        <label for="custom-role">Enter Custom Role *</label>
+                        <input type="text" id="custom-role" class="input-field" placeholder="e.g., Machine Learning Engineer">
+                    </div>
+
+                    <!-- Context Input Method -->
+                    <div class="form-group">
+                        <label>Provide Your Background</label>
+                        <div class="toggle-buttons">
+                            <button id="btn-resume" class="toggle-btn active" data-method="resume">
+                                📄 Upload Resume
+                            </button>
+                            <button id="btn-description" class="toggle-btn" data-method="description">
+                                ✍️ Enter Description
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Resume Upload -->
+                    <div id="resume-container" class="input-container">
+                        <div class="upload-area" id="upload-area">
+                            <input type="file" id="resume-upload" accept=".pdf" hidden>
+                            <div class="upload-content">
+                                <span class="upload-icon">📁</span>
+                                <p>Click to upload or drag & drop your resume</p>
+                                <small>PDF format only</small>
+                            </div>
+                        </div>
+                        <div id="resume-preview" class="hidden">
+                            <p><strong>File:</strong> <span id="file-name"></span></p>
+                            <button id="remove-resume" class="btn-secondary">Remove</button>
+                        </div>
+                    </div>
+
+                    <!-- Description Input -->
+                    <div id="description-container" class="input-container hidden">
+                        <textarea 
+                            id="description-text" 
+                            class="input-field" 
+                            placeholder="Tell us about yourself... (Skills, projects, experience, etc.)"
+                            rows="6"
+                        ></textarea>
+                    </div>
+
+                    <!-- Generate Questions Button -->
+                    <button id="generate-questions-btn" class="btn-primary" disabled>
+                        Generate Interview Questions
+                    </button>
+
+                    <div id="loading-agent1" class="loading hidden">
+                        <div class="spinner"></div>
+                        <p>Analyzing your background and generating questions...</p>
+                    </div>
+                </div>
+
+                <!-- Generated Questions Display -->
+                <div id="questions-container" class="questions-container hidden">
+                    <h3>📝 Your Personalized Interview Questions</h3>
+                    <div id="questions-list"></div>
+                    <button id="start-recording-btn" class="btn-primary">
+                        Start Video Response
+                    </button>
+                </div>
+            </section>
+
+            <!-- Agent 2: Multimodal Coach Section -->
+            <section id="agent2-section" class="section hidden">
+                <div class="section-header">
+                    <h2>🎥 Agent 2: Multimodal Coach</h2>
+                    <p>Record your response and get AI-powered feedback</p>
+                </div>
+
+                <div id="video-section">
+                    <!-- Coming in next feature -->
+                    <p class="placeholder-text">Video recording feature will be available in the next build...</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Powered by Google Gemini 1.5 Pro & ADK</p>
+        </footer>
+    </div>
+
+    <script src="scripts/api.js"></script>
+    <script src="scripts/agent1.js"></script>
+</body>
+</html>

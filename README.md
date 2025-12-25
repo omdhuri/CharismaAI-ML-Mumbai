@@ -15,9 +15,15 @@ pip install -r requirements.txt
 
 ### 2. Configure API Key
 
-Edit `backend/.env` and add your Gemini API key:
+Copy the example environment file and add your Gemini API key:
+```bash
+cd backend
+copy .env.example .env
 ```
-GEMINI_API_KEY=cd your_actual_api_key_here
+
+Then edit `backend/.env` and replace `your_gemini_api_key_here` with your actual API key:
+```
+GEMINI_API_KEY=AIzaSy...your_actual_key
 ```
 
 ### 3. Run Backend
