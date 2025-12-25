@@ -179,6 +179,17 @@ function displayQuestions(questions) {
 
 // Start Recording Button (transitions to Agent 2)
 document.getElementById('start-recording-btn').addEventListener('click', () => {
+    // Pass questions and context to Agent 2
+    const questions = Array.from(document.querySelectorAll('.question-item')).map(
+        item => item.textContent.replace(/^Question \d+:\s*/, '')
+    );
+
+    window.agent2.initialize(questions, selectedRole,
+        inputMethod === 'resume' ? `Resume: ${selectedFile?.name}` : descriptionText.value
+    );
+
+    // Switch sections
     document.getElementById('agent1-section').classList.add('hidden');
     document.getElementById('agent2-section').classList.remove('hidden');
 });
+

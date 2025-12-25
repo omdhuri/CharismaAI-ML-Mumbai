@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CharismaAI - AI Interview Coach</title>
     <link rel="stylesheet" href="styles/main.css">
 </head>
+
 <body>
     <div class="app-container">
         <!-- Header -->
@@ -44,7 +46,8 @@
 
                     <div id="custom-role-container" class="form-group hidden">
                         <label for="custom-role">Enter Custom Role *</label>
-                        <input type="text" id="custom-role" class="input-field" placeholder="e.g., Machine Learning Engineer">
+                        <input type="text" id="custom-role" class="input-field"
+                            placeholder="e.g., Machine Learning Engineer">
                     </div>
 
                     <!-- Context Input Method -->
@@ -78,12 +81,9 @@
 
                     <!-- Description Input -->
                     <div id="description-container" class="input-container hidden">
-                        <textarea 
-                            id="description-text" 
-                            class="input-field" 
+                        <textarea id="description-text" class="input-field"
                             placeholder="Tell us about yourself... (Skills, projects, experience, etc.)"
-                            rows="6"
-                        ></textarea>
+                            rows="6"></textarea>
                     </div>
 
                     <!-- Generate Questions Button -->
@@ -115,8 +115,82 @@
                 </div>
 
                 <div id="video-section">
-                    <!-- Coming in next feature -->
-                    <p class="placeholder-text">Video recording feature will be available in the next build...</p>
+                    <!-- Questions Reference -->
+                    <div id="questions-display" class="questions-reference"></div>
+
+                    <!-- Video Input Method Toggle -->
+                    <div class="toggle-buttons">
+                        <button id="btn-webcam" class="toggle-btn active">🎥 Record with Webcam</button>
+                        <button id="btn-upload-video" class="toggle-btn">📹 Upload Video</button>
+                    </div>
+
+                    <!-- Webcam Recording Section -->
+                    <div id="webcam-section">
+                        <div id="camera-status" class="camera-status hidden">
+                            <p id="camera-status-text"></p>
+                            <button id="retry-camera-btn" class="btn-secondary hidden">🔄 Retry Camera</button>
+                        </div>
+                        <video id="video-preview" class="video-display" autoplay muted></video>
+                        <div class="recording-controls">
+                            <button id="start-record-btn" class="btn-primary" disabled>⏺️ Start Recording</button>
+                            <button id="stop-record-btn" class="btn-danger hidden">⏹️ Stop Recording</button>
+                            <span id="recording-timer" class="recording-timer hidden">0:00</span>
+                        </div>
+                        <p class="help-text">You have up to 2 minutes to answer the questions</p>
+                    </div>
+
+                    <!-- Video Upload Section -->
+                    <div id="upload-video-section" class="hidden">
+                        <input type="file" id="video-upload" accept="video/*" hidden>
+                        <div class="upload-area" id="video-upload-area">
+                            <span class="upload-icon">🎥</span>
+                            <p><strong>Upload Your Interview Response Video</strong></p>
+                            <small>MP4, MOV, or WEBM (max 50MB, 2 min)</small>
+                            <br><br>
+                            <small class="suggestion-text">
+                                💡 <strong>Tip:</strong> You can record on your phone/another device and upload here!
+                            </small>
+                        </div>
+                    </div>
+
+                    <!-- Video Preview -->
+                    <div id="recorded-preview" class="hidden">
+                        <h3>📹 Your Recording</h3>
+                        <video id="recorded-video" class="video-display" controls></video>
+                        <div class="preview-actions">
+                            <button id="retake-btn" class="btn-secondary">🔄 Retake</button>
+                            <button id="analyze-btn" class="btn-primary">🤖 Analyze My Response</button>
+                        </div>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div id="loading-agent2" class="loading hidden">
+                        <div class="spinner"></div>
+                        <p>Analyzing your video response with AI...</p>
+                        <small>This may take 30-60 seconds</small>
+                    </div>
+
+                    <!-- Feedback Results -->
+                    <div id="feedback-container" class="feedback-container hidden">
+                        <h3>📊 Your Interview Feedback</h3>
+                        <div class="overall-score-card">
+                            <h2 id="overall-score" class="overall-score">--</h2>
+                            <p>Overall Performance Score</p>
+                        </div>
+
+                        <div class="feedback-grid">
+                            <div class="feedback-card" id="content-feedback"></div>
+                            <div class="feedback-card" id="verbal-feedback"></div>
+                            <div class="feedback-card" id="nonverbal-feedback"></div>
+                        </div>
+
+                        <div class="tips-section" id="actionable-tips"></div>
+
+                        <div class="similar-roles-section" id="similar-roles">
+                            <h4>💼 Similar Roles You Might Excel In</h4>
+                            <div id="roles-list"></div>
+                        </div>
+                    </div>
                 </div>
             </section>
         </main>
@@ -129,5 +203,8 @@
 
     <script src="scripts/api.js"></script>
     <script src="scripts/agent1.js"></script>
+    <script src="scripts/agent2.js"></script>
+
 </body>
+
 </html>

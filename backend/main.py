@@ -4,6 +4,7 @@ from fastapi.responses import JSONResponse
 import os
 from dotenv import load_dotenv
 from routes.agent1_routes import router as agent1_router
+from routes.agent2_routes import router as agent2_router
 
 # Load environment variables
 load_dotenv()
@@ -12,6 +13,7 @@ app = FastAPI(title="CharismaAI Backend", version="1.0.0")
 
 # Register routes
 app.include_router(agent1_router)
+app.include_router(agent2_router)
 
 # CORS configuration for frontend access
 app.add_middleware(
